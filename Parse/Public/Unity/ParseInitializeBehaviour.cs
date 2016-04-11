@@ -28,6 +28,13 @@ namespace Parse {
     [SerializeField]
     public string dotnetKey;
 
+
+    /// <summary>
+    /// The Parse server used in this app. 
+    /// </summary>
+    [SerializeField]
+    public string server;
+
     /// <summary>
     /// Initializes the Parse SDK and begins running network requests created by Parse.
     /// </summary>
@@ -66,7 +73,14 @@ namespace Parse {
         // Keep this gameObject around, even when the scene changes.
         GameObject.DontDestroyOnLoad(gameObject);
 
-        ParseClient.Initialize(applicationID, dotnetKey);
+        //ParseClient.Initialize(applicationID, dotnetKey);
+        ParseClient.Configuration cfg = new ParseClient.Configuration();
+        cfg.ApplicationId = applicationID;
+        cfg.WindowsKey = dotnetKey;
+        if (!string.IsNullOrEmpty(server))
+            cfg.Server = server;
+
+        ParseClient.Initialize(cfg);
 
         // Kick off the dispatcher.
         StartCoroutine(PlatformHooks.RunDispatcher());
