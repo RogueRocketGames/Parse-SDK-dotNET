@@ -14,6 +14,13 @@ using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Parse {
+
+    //hack
+    public class UnityOverrides
+    {
+        public static string sOverridePersistentPath = null;
+    }
+
   partial class PlatformHooks : IPlatformHooks {
     private static IDictionary<string, object> settings;
     private static string settingsPath;
@@ -1156,7 +1163,15 @@ namespace Parse {
         return;
       }
 
-      settingsPath = Path.Combine(Application.persistentDataPath, "Parse.settings");
+
+      //changed by rich
+      string path = Application.persistentDataPath;
+      if (!string.IsNullOrEmpty(UnityOverrides.sOverridePersistentPath))
+      {
+          path = UnityOverrides.sOverridePersistentPath;
+      }
+
+      settingsPath = Path.Combine(path, "Parse.settings");
       // We can only set some values here since we can be sure that Initialize is always called
       // from main thread.
       isWebPlayer = Application.isWebPlayer;
