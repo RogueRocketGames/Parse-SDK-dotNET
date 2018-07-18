@@ -182,7 +182,7 @@ namespace Parse {
         if (settingsPath == null) {
           throw new InvalidOperationException("Parse must be initialized before making any calls.");
         }
-        return Application.platform == RuntimePlatform.WP8Player;
+        return false; // Application.platform == RuntimePlatform.WP8Player;
       }
     }
 
@@ -1056,15 +1056,15 @@ namespace Parse {
     /// <param name="action">Action to be completed when device token is received.</param>
     internal static void RegisterDeviceTokenRequest(Action<byte[]> action) {
       RunOnMainThread(() => {
-        var deviceToken = UnityEngine.iOS.NotificationServices.deviceToken;
-        if (deviceToken != null) {
-          action(deviceToken);
-          RegisteriOSPushNotificationListener((payload) => {
-            ParsePush.parsePushNotificationReceived.Invoke(ParseInstallation.CurrentInstallation, new ParsePushNotificationEventArgs(payload));
-          });
-        } else {
-          RegisterDeviceTokenRequest(action);
-        }
+        //var deviceToken = UnityEngine.iOS.NotificationServices.deviceToken;
+        //if (deviceToken != null) {
+        //  action(deviceToken);
+        //  RegisteriOSPushNotificationListener((payload) => {
+        //    ParsePush.parsePushNotificationReceived.Invoke(ParseInstallation.CurrentInstallation, new ParsePushNotificationEventArgs(payload));
+        //  });
+        //} else {
+        //  RegisterDeviceTokenRequest(action);
+        //}
       });
     }
 
@@ -1074,22 +1074,22 @@ namespace Parse {
     /// <param name="action">Action to be completed when push notification is received.</param>
     internal static void RegisteriOSPushNotificationListener(Action<IDictionary<string, object>> action) {
       RunOnMainThread(() => {
-        int remoteNotificationCount = UnityEngine.iOS.NotificationServices.remoteNotificationCount;
-        if (remoteNotificationCount > 0) {
-          var remoteNotifications = UnityEngine.iOS.NotificationServices.remoteNotifications;
-          foreach (var val in remoteNotifications) {
-            var userInfo = val.userInfo;
-            var payload = new Dictionary<string, object>();
-            foreach (var key in userInfo.Keys) {
-              payload[key.ToString()] = userInfo[key];
-            }
+        //int remoteNotificationCount = UnityEngine.iOS.NotificationServices.remoteNotificationCount;
+        //if (remoteNotificationCount > 0) {
+        //  var remoteNotifications = UnityEngine.iOS.NotificationServices.remoteNotifications;
+        //  foreach (var val in remoteNotifications) {
+        //    var userInfo = val.userInfo;
+        //    var payload = new Dictionary<string, object>();
+        //    foreach (var key in userInfo.Keys) {
+        //      payload[key.ToString()] = userInfo[key];
+        //    }
 
-            // Finally, do the action for each remote notification payload.
-            action(payload);
-          }
+        //    // Finally, do the action for each remote notification payload.
+        //    action(payload);
+        //  }
 
-          UnityEngine.iOS.NotificationServices.ClearRemoteNotifications();
-        }
+        //  UnityEngine.iOS.NotificationServices.ClearRemoteNotifications();
+        //}
 
         // Check in every frame.
         RegisteriOSPushNotificationListener(action);
@@ -1151,7 +1151,7 @@ namespace Parse {
     /// <summary>
     /// Initialize the app. Called from <see cref="ParseClient.Initialize(string, string)"/>. Guaranteed to be run on main thread.
     /// </summary>
-    public void Initialize() {
+    public void Initialize(bool enablePush) {
       if (settingsPath != null) {
         return;
       }
@@ -1159,10 +1159,10 @@ namespace Parse {
       settingsPath = Path.Combine(Application.persistentDataPath, "Parse.settings");
       // We can only set some values here since we can be sure that Initialize is always called
       // from main thread.
-      isWebPlayer = Application.isWebPlayer;
+      isWebPlayer = false; // Application.isWebPlayer;
       osVersion = SystemInfo.deviceModel;
       appBuildVersion = Application.version;
-      appDisplayVersion = Application.bundleIdentifier;
+      appDisplayVersion = Application.version;
       appName = Application.productName;
 
       settings = SettingsWrapper.Wrapper;
@@ -1170,7 +1170,7 @@ namespace Parse {
       // TODO (hallucinogen): We might not want to do this automagically...
       ParseFacebookUtils.Initialize();
 
-      if (IsAndroid) {
+      if (IsAndroid && enablePush) {
         try {
           CallStaticJavaUnityMethod("com.parse.ParsePushUnityHelper", "registerGcm", null);
         } catch (Exception e) {

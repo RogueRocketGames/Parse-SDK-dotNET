@@ -15,7 +15,7 @@ namespace Parse.Internal {
     IDictionary<string, object> ApplicationSettings { get; }
     IHttpClient HttpClient { get; }
 
-    void Initialize();
+    void Initialize(bool enablePush);
 
     /// <summary>
     /// Executes platform specific hook that mutate the installation based on

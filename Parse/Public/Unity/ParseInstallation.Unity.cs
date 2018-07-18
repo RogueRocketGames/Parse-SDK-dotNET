@@ -42,26 +42,26 @@ namespace Parse {
     [ParseFieldName("badge")]
     public int Badge {
       get {
-        if (PlatformHooks.IsIOS) {
-				  PlatformHooks.RunOnMainThread(() => {
-            if (UnityEngine.iOS.NotificationServices.localNotificationCount > 0) {
-              SetProperty<int>(UnityEngine.iOS.NotificationServices.localNotifications[0].applicationIconBadgeNumber, "Badge");
-            }
-          });
-        }
+      //  if (PlatformHooks.IsIOS) {
+				  //PlatformHooks.RunOnMainThread(() => {
+      //      if (UnityEngine.iOS.NotificationServices.localNotificationCount > 0) {
+      //        SetProperty<int>(UnityEngine.iOS.NotificationServices.localNotifications[0].applicationIconBadgeNumber, "Badge");
+      //      }
+      //    });
+      //  }
         return GetProperty<int>("Badge");
       }
       set {
         int badge = value;
         SetProperty<int>(badge, "Badge");
-        if (PlatformHooks.IsIOS) {
-          PlatformHooks.RunOnMainThread(() => {
-            UnityEngine.iOS.LocalNotification notification = new UnityEngine.iOS.LocalNotification ();
-            notification.applicationIconBadgeNumber = badge;
-            notification.hasAction = false;
-            UnityEngine.iOS.NotificationServices.PresentLocalNotificationNow(notification);
-          });
-        }
+        //if (PlatformHooks.IsIOS) {
+        //  PlatformHooks.RunOnMainThread(() => {
+        //    UnityEngine.iOS.LocalNotification notification = new UnityEngine.iOS.LocalNotification ();
+        //    notification.applicationIconBadgeNumber = badge;
+        //    notification.hasAction = false;
+        //    UnityEngine.iOS.NotificationServices.PresentLocalNotificationNow(notification);
+        //  });
+        //}
       }
     }
   }

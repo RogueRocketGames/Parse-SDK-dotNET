@@ -48,6 +48,9 @@ namespace Parse {
       /// The Parse.com .NET key for your app.
       /// </summary>
       public String WindowsKey { get; set; }
+
+
+      public bool EnablePush { get; set; }
     }
 
     private static readonly object mutex = new object();
@@ -137,7 +140,7 @@ namespace Parse {
         ParseObject.RegisterSubclass<ParseSession>();
 
         // Give platform-specific libraries a chance to do additional initialization.
-        PlatformHooks.Initialize();
+        PlatformHooks.Initialize(configuration.EnablePush);
       }
     }
 

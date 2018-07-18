@@ -28,6 +28,13 @@ namespace Parse {
     [SerializeField]
     public string dotnetKey;
 
+    [SerializeField]
+    public string serverUrl;
+
+    [SerializeField]
+    public bool enablePushNotifs;
+
+
     /// <summary>
     /// Initializes the Parse SDK and begins running network requests created by Parse.
     /// </summary>
@@ -55,7 +62,7 @@ namespace Parse {
     /// <seealso href="http://docs.unity3d.com/ScriptReference/MonoBehaviour.OnApplicationPause.html"/>
     /// <param name="paused"><c>true</c> if the application is paused.</param>
     public void OnApplicationPause(bool paused) {
-      if (PlatformHooks.IsAndroid) {
+      if (PlatformHooks.IsAndroid && enablePushNotifs) {
         PlatformHooks.CallStaticJavaUnityMethod("com.parse.ParsePushUnityHelper", "setApplicationPaused", new object[] { paused });
       }
     }
@@ -66,7 +73,13 @@ namespace Parse {
         // Keep this gameObject around, even when the scene changes.
         GameObject.DontDestroyOnLoad(gameObject);
 
-        ParseClient.Initialize(applicationID, dotnetKey);
+        ParseClient.Initialize(new ParseClient.Configuration()
+        {
+          ApplicationId = applicationID,
+          WindowsKey = dotnetKey,
+          Server = serverUrl,
+          EnablePush = enablePushNotifs
+        });
 
         // Kick off the dispatcher.
         StartCoroutine(PlatformHooks.RunDispatcher());
