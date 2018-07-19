@@ -35,10 +35,17 @@ namespace Parse {
     public bool enablePushNotifs;
 
 
+    public static bool IsInitialized {
+      get {
+        return isInitialized;
+      }
+    }
+
     /// <summary>
     /// Initializes the Parse SDK and begins running network requests created by Parse.
+    /// chagned to START to give runtime setup an opportunity to fill the fields.
     /// </summary>
-    public virtual void Awake() {
+    public virtual void Start() {
       Initialize();
       // Force the name to be `ParseInitializeBehaviour` in runtime.
       gameObject.name = "ParseInitializeBehaviour";
@@ -69,7 +76,6 @@ namespace Parse {
 
     private void Initialize() {
       if (!isInitialized) {
-        isInitialized = true;
         // Keep this gameObject around, even when the scene changes.
         GameObject.DontDestroyOnLoad(gameObject);
 
@@ -83,6 +89,8 @@ namespace Parse {
 
         // Kick off the dispatcher.
         StartCoroutine(PlatformHooks.RunDispatcher());
+
+        isInitialized = true;
       }
     }
 
