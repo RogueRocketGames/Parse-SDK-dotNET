@@ -1,10 +1,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
+using System;
+using ParseSystem.Threading;
 using Parse.Internal;
+using System.Threading;
 
-namespace System.Threading.Tasks {
+namespace ParseSystem.Threading.Tasks {
   /// <summary>
   /// Represents an asynchronous task.
   /// </summary>

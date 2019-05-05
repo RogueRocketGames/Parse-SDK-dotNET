@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace System.Threading.Tasks {
+namespace ParseSystem.Threading.Tasks {
   /// <summary>
   /// Provides extension methods for working with <see cref="Task"/>s.
   /// </summary>

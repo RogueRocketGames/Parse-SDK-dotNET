@@ -37,10 +37,9 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\Parse.xml</DocumentationFile>
   </PropertyGroup>
-
   <!-- Used for setting excluded files -->
   <PropertyGroup>
-      <ExcludedPlatformSpecificSourceFilesString>
+    <ExcludedPlatformSpecificSourceFilesString>
           **\Partial\**;
           **\Android\**;
           **\iOS\**;
@@ -53,11 +52,15 @@
       </ExcludedPlatformSpecificSourceFilesString>
   </PropertyGroup>
   <ItemGroup>
-      <!-- Assembly info, etc. -->
-      <Compile Include="Properties\*.cs" Exclude="Properties\Settings.Designer.cs" />
-
-      <Compile Include="Internal\**\*.cs" Exclude="$(ExcludedPlatformSpecificSourceFilesString)" />
-      <Compile Include="Public\**\*.cs" Exclude="$(ExcludedPlatformSpecificSourceFilesString)" />
+    <!-- Assembly info, etc. -->
+    <Compile Include="Properties\*.cs" Exclude="Properties\Settings.Designer.cs" />
+    <Compile Include="Internal\**\*.cs" Exclude="$(ExcludedPlatformSpecificSourceFilesString)" />
+    <Compile Include="Public\**\*.cs" Exclude="$(ExcludedPlatformSpecificSourceFilesString)" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="UnityEngine">
+      <HintPath>.\UnityEngine.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <PropertyGroup>
     <SignAssembly>false</SignAssembly>

@@ -3,8 +3,8 @@
 using System;
 using System.Collections.Generic;
 using Parse.Internal;
-using System.Threading.Tasks;
-using System.Threading;
+using ParseSystem.Threading.Tasks;
+using ParseSystem.Threading;
 
 namespace Parse {
   /// <summary>

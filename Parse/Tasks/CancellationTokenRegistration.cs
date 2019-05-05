@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace System.Threading {
+namespace ParseSystem.Threading {
   /// <summary>
   /// Represents a registration of a handler with a cancellation token, and can be used to
   /// unregister that handler.

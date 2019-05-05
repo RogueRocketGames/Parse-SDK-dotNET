@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using ParseSystem.Threading;
 
-namespace System.Threading.Tasks {
+namespace ParseSystem.Threading.Tasks {
   internal class TaskScheduler {
     private static SynchronizationContext defaultContext = new SynchronizationContext();
     private SynchronizationContext context;

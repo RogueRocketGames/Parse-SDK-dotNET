@@ -5,8 +5,8 @@ using Parse.Internal;
 using System;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
-using System.Threading;
-using System.Threading.Tasks;
+using ParseSystem.Threading;
+using ParseSystem.Threading.Tasks;
 
 namespace ParseTest {
   [TestFixture]

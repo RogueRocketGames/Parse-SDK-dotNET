@@ -2,8 +2,8 @@
 
 using System;
 using System.Collections.Generic;
-using System.Threading;
-using System.Threading.Tasks;
+using ParseSystem.Threading;
+using ParseSystem.Threading.Tasks;
 namespace Parse.Internal {
   internal class ParseAnalyticsController : IParseAnalyticsController {
     private readonly IParseCommandRunner commandRunner;

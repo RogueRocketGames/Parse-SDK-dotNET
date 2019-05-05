@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace System.Threading {
+namespace ParseSystem.Threading {
   /// <summary>
   /// A token that can be used for cancellation of an asynchronous operation.
   /// </summary>

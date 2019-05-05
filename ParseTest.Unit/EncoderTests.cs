@@ -5,7 +5,7 @@ using Parse.Internal;
 using System;
 using System.IO;
 using System.Collections.Generic;
-using System.Threading.Tasks;
+using ParseSystem.Threading.Tasks;
 
 // TODO (hallucinogen): mock ParseACL, ParseObject, ParseUser once we have their Interfaces
 namespace ParseTest {

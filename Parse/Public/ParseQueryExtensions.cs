@@ -64,7 +64,8 @@ namespace Parse {
     /// add a WhereContainedIn() clause.
     /// </summary>
     private static bool ContainsStub<T>(object collection, T value) {
-      throw new NotImplementedException(
+        UnityEngine.Debug.LogError("NotImpl: ContainsStub");
+        throw new NotImplementedException(
           "Exists only for expression translation as a placeholder.");
     }
 
@@ -73,7 +74,8 @@ namespace Parse {
     /// add a WhereNotContainedIn() clause.
     /// </summary>
     private static bool NotContainsStub<T>(object collection, T value) {
-      throw new NotImplementedException(
+        UnityEngine.Debug.LogError("NotImpl: NotContainsStub");
+        throw new NotImplementedException(
           "Exists only for expression translation as a placeholder.");
     }
 
@@ -82,7 +84,8 @@ namespace Parse {
     /// add a WhereExists() clause.
     /// </summary>
     private static bool ContainsKeyStub(ParseObject obj, string key) {
-      throw new NotImplementedException(
+        UnityEngine.Debug.LogError("NotImpl: ContainsKeyStub");
+        throw new NotImplementedException(
           "Exists only for expression translation as a placeholder.");
     }
 
@@ -91,7 +94,8 @@ namespace Parse {
     /// add a WhereDoesNotExist() clause.
     /// </summary>
     private static bool NotContainsKeyStub(ParseObject obj, string key) {
-      throw new NotImplementedException(
+        UnityEngine.Debug.LogError("NotImpl: NotContainsKeyStub");
+        throw new NotImplementedException(
           "Exists only for expression translation as a placeholder.");
     }
 
