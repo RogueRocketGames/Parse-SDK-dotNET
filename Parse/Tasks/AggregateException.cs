@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 
-namespace System {
+namespace ParseSystem {
   /// <summary>
   /// Aggregates Exceptions that may be thrown in the process of a task's execution.
   /// </summary>

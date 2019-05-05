@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ParseSystem.Threading;
 using System.Threading;
 
-namespace System.Threading {
+namespace ParseSystem.Threading {
   internal class ThreadLocal<T> : IDisposable {
     private static long lastId = -1;
     [ThreadStatic]

@@ -4,8 +4,8 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Threading;
-using System.Threading.Tasks;
+using ParseSystem.Threading;
+using ParseSystem.Threading.Tasks;
 
 namespace Parse.Internal {
   internal class ParseQueryController : IParseQueryController {

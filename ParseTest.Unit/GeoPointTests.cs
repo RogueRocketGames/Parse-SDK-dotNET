@@ -2,7 +2,7 @@ using NUnit.Framework;
 using Parse;
 using Parse.Internal;
 using System;
-using System.Threading;
+using ParseSystem.Threading;
 using System.Globalization;
 using System.Collections.Generic;
 

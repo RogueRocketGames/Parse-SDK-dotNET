@@ -6,7 +6,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.ExceptionServices;
 using System.Text;
-using System.Threading.Tasks;
+using ParseSystem.Threading.Tasks;
 
 namespace Parse.Internal {
   /// <summary>

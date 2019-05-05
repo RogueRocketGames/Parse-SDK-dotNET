@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
+using ParseSystem.Threading;
 
-namespace System.Threading {
+namespace ParseSystem.Threading {
   /// <summary>
   /// A provider for <see cref="CancellationToken"/>s. Use the CancellationTokenSource to
   /// notify consumers of its token that they should cancel any ongoing operations.

@@ -10,7 +10,8 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
+using ParseSystem.Threading;
+using ParseSystem.Threading.Tasks;
 using UnityEngine;
 
 namespace Parse {

@@ -6,7 +6,8 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+using ParseSystem.Threading;
+using ParseSystem.Threading.Tasks;
 
 namespace Parse.Internal {
   class LockSet {

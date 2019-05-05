@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using ParseSystem.Threading.Tasks;
 
 namespace Parse.Internal {
   class ParseRelationOperation : IParseFieldOperation {

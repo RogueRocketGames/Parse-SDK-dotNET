@@ -1,8 +1,8 @@
 using Parse;
 using Parse.Internal;
 using System;
-using System.Threading;
-using System.Threading.Tasks;
+using ParseSystem.Threading;
+using ParseSystem.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using NUnit.Framework;
 using System.Collections.Generic;

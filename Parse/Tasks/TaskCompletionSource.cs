@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace System.Threading.Tasks {
+namespace ParseSystem.Threading.Tasks {
   /// <summary>
   /// Allows safe orchestration of a task's completion, preventing the consumer from prematurely
   /// completing the task. Essentially, it represents the producer side of a <see cref="Tasks.Task{T}"/>,

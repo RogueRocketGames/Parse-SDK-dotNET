@@ -3,7 +3,7 @@
 using Parse.Internal;
 using System;
 using System.Reflection;
-using System.Threading.Tasks;
+using ParseSystem.Threading.Tasks;
 
 namespace Parse {
   partial class PlatformHooks : IPlatformHooks {

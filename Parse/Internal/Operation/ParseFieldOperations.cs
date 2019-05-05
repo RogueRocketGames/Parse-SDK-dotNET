@@ -27,6 +27,12 @@ namespace Parse.Internal {
     private static ParseObjectIdComparer comparer;
 
     public static IParseFieldOperation Decode(IDictionary<string, object> json) {
+        UnityEngine.Debug.LogError("NotImpl: ParseFieldOperations:Decode");
+        foreach (var kvp in json)
+        {
+            UnityEngine.Debug.Log(kvp.Key + ": "+ kvp.Value.ToString());
+        }
+        
       throw new NotImplementedException();
     }
 

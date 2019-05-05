@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 
-namespace System.Threading.Tasks {
+namespace ParseSystem.Threading.Tasks {
   internal class TaskFactory {
     private readonly TaskScheduler scheduler;
     private readonly CancellationToken cancellationToken;

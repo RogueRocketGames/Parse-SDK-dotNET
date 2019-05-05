@@ -74,6 +74,7 @@ namespace Parse {
           target = writers;
           break;
         default:
+          UnityEngine.Debug.LogError("NotImpl: ParseACL:SetAccess");
           throw new NotImplementedException("Unknown AccessKind");
       }
       if (allowed) {
@@ -93,6 +94,7 @@ namespace Parse {
         case AccessKind.Write:
           return writers.Contains(userId);
         default:
+          UnityEngine.Debug.LogError("NotImpl: ParseACL:SetAccess");
           throw new NotImplementedException("Unknown AccessKind");
       }
     }
