@@ -1062,55 +1062,55 @@ namespace Parse {
       });
     }
 
-    #region iOS Callbacks
+    //#region iOS Callbacks
 
-    /// <summary>
-    /// Warning: iOS only. Registers a callback for device token request.
-    /// </summary>
-    /// <param name="action">Action to be completed when device token is received.</param>
-    internal static void RegisterDeviceTokenRequest(Action<byte[]> action) {
-      RunOnMainThread(() => {
-        var deviceToken = UnityEngine.iOS.NotificationServices.deviceToken;
-        if (deviceToken != null) {
-          action(deviceToken);
-          RegisteriOSPushNotificationListener((payload) => {
-            ParsePush.parsePushNotificationReceived.Invoke(ParseInstallation.CurrentInstallation, new ParsePushNotificationEventArgs(payload));
-          });
-        } else {
-          RegisterDeviceTokenRequest(action);
-        }
-      });
-    }
+    ///// <summary>
+    ///// Warning: iOS only. Registers a callback for device token request.
+    ///// </summary>
+    ///// <param name="action">Action to be completed when device token is received.</param>
+    //internal static void RegisterDeviceTokenRequest(Action<byte[]> action) {
+    //  RunOnMainThread(() => {
+    //    var deviceToken = UnityEngine.iOS.NotificationServices.deviceToken;
+    //    if (deviceToken != null) {
+    //      action(deviceToken);
+    //      RegisteriOSPushNotificationListener((payload) => {
+    //        ParsePush.parsePushNotificationReceived.Invoke(ParseInstallation.CurrentInstallation, new ParsePushNotificationEventArgs(payload));
+    //      });
+    //    } else {
+    //      RegisterDeviceTokenRequest(action);
+    //    }
+    //  });
+    //}
 
-    /// <summary>
-    /// Warning: iOS only. Registers a callback for push notification.
-    /// </summary>
-    /// <param name="action">Action to be completed when push notification is received.</param>
-    internal static void RegisteriOSPushNotificationListener(Action<IDictionary<string, object>> action) {
-      RunOnMainThread(() => {
-        int remoteNotificationCount = UnityEngine.iOS.NotificationServices.remoteNotificationCount;
-        if (remoteNotificationCount > 0) {
-          var remoteNotifications = UnityEngine.iOS.NotificationServices.remoteNotifications;
-          foreach (var val in remoteNotifications) {
-            var userInfo = val.userInfo;
-            var payload = new Dictionary<string, object>();
-            foreach (var key in userInfo.Keys) {
-              payload[key.ToString()] = userInfo[key];
-            }
+    ///// <summary>
+    ///// Warning: iOS only. Registers a callback for push notification.
+    ///// </summary>
+    ///// <param name="action">Action to be completed when push notification is received.</param>
+    //internal static void RegisteriOSPushNotificationListener(Action<IDictionary<string, object>> action) {
+    //  RunOnMainThread(() => {
+    //    int remoteNotificationCount = UnityEngine.iOS.NotificationServices.remoteNotificationCount;
+    //    if (remoteNotificationCount > 0) {
+    //      var remoteNotifications = UnityEngine.iOS.NotificationServices.remoteNotifications;
+    //      foreach (var val in remoteNotifications) {
+    //        var userInfo = val.userInfo;
+    //        var payload = new Dictionary<string, object>();
+    //        foreach (var key in userInfo.Keys) {
+    //          payload[key.ToString()] = userInfo[key];
+    //        }
 
-            // Finally, do the action for each remote notification payload.
-            action(payload);
-          }
+    //        // Finally, do the action for each remote notification payload.
+    //        action(payload);
+    //      }
 
-          UnityEngine.iOS.NotificationServices.ClearRemoteNotifications();
-        }
+    //      UnityEngine.iOS.NotificationServices.ClearRemoteNotifications();
+    //    }
 
-        // Check in every frame.
-        RegisteriOSPushNotificationListener(action);
-      });
-    }
+    //    // Check in every frame.
+    //    RegisteriOSPushNotificationListener(action);
+    //  });
+    //}
 
-    #endregion
+    //#endregion
 
     /// <summary>
     /// Runs things inside of a Unity coroutine (some APIs require that you
@@ -1205,7 +1205,7 @@ namespace Parse {
 
     public Task ExecuteParseInstallationSaveHookAsync(ParseInstallation installation) {
       return Task.Run(() => {
-        installation.SetIfDifferent("badge", installation.Badge);
+        //installation.SetIfDifferent("badge", installation.Badge);
       });
     }
   }

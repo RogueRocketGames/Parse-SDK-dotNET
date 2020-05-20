@@ -43,17 +43,17 @@ namespace Parse {
       // Force the name to be `ParseInitializeBehaviour` in runtime.
       gameObject.name = "ParseInitializeBehaviour";
 
-      if (PlatformHooks.IsIOS) {
-        PlatformHooks.RegisterDeviceTokenRequest((deviceToken) => {
-          if (deviceToken != null) {
-            ParseInstallation installation = ParseInstallation.CurrentInstallation;
-            installation.SetDeviceTokenFromData(deviceToken);
+      //if (PlatformHooks.IsIOS) {
+      //  PlatformHooks.RegisterDeviceTokenRequest((deviceToken) => {
+      //    if (deviceToken != null) {
+      //      ParseInstallation installation = ParseInstallation.CurrentInstallation;
+      //      installation.SetDeviceTokenFromData(deviceToken);
 
-            // Optimistically assume this will finish.
-            installation.SaveAsync();
-          }
-        });
-      }
+      //      // Optimistically assume this will finish.
+      //      installation.SaveAsync();
+      //    }
+      //  });
+      //}
     }
 
     /// <summary>
