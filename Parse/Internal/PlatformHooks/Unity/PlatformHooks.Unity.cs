@@ -17,8 +17,14 @@ using UnityEngine;
 namespace Parse {
 
     //hack
+    ///<Summary>
+    /// UnityOverrides, added by Rogue Rocket Games for more control from unity
+    ///</Summary>
     public class UnityOverrides
     {
+        ///<Summary>
+        /// UnityOverrides, added by Rogue Rocket Games for more control from unity: provide persistent folder path
+        ///</Summary>
         public static string sOverridePersistentPath = null;
     }
 
@@ -190,7 +196,7 @@ namespace Parse {
         if (settingsPath == null) {
           throw new InvalidOperationException("Parse must be initialized before making any calls.");
         }
-        return Application.platform == RuntimePlatform.WP8Player;
+        return false;
       }
     }
 
@@ -1175,10 +1181,10 @@ namespace Parse {
       settingsPath = Path.Combine(path, "Parse.settings");
       // We can only set some values here since we can be sure that Initialize is always called
       // from main thread.
-      isWebPlayer = Application.isWebPlayer;
+      isWebPlayer = false;
       osVersion = SystemInfo.deviceModel;
       appBuildVersion = Application.version;
-      appDisplayVersion = Application.bundleIdentifier;
+      appDisplayVersion = Application.identifier;
       appName = Application.productName;
 
       settings = SettingsWrapper.Wrapper;
