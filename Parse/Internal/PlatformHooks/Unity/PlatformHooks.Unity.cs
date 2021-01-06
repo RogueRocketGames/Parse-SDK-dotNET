@@ -1192,15 +1192,15 @@ namespace Parse {
       // TODO (hallucinogen): We might not want to do this automagically...
       ParseFacebookUtils.Initialize();
 
-      if (IsAndroid) {
-        try {
-          CallStaticJavaUnityMethod("com.parse.ParsePushUnityHelper", "registerGcm", null);
-        } catch (Exception e) {
-          // We don't care about the exception. If it reaches this point, it means the Plugin is misconfigured/we don't want to use
-          // PushNotification. Let's just log it to developer.
-          Debug.LogException(e);
-        }
-      }
+      //if (IsAndroid) {
+      //  try {
+      //    CallStaticJavaUnityMethod("com.parse.ParsePushUnityHelper", "registerGcm", null);
+      //  } catch (Exception e) {
+      //    // We don't care about the exception. If it reaches this point, it means the Plugin is misconfigured/we don't want to use
+      //    // PushNotification. Let's just log it to developer.
+      //    Debug.LogException(e);
+      //  }
+      //}
     }
 
     public Task ExecuteParseInstallationSaveHookAsync(ParseInstallation installation) {
